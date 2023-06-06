@@ -11,6 +11,7 @@ import { V2Module } from './modules/v2/v2.module';
     ConfigModule.forRoot({
       isGlobal: true,
       ignoreEnvFile: true,
+      cache: true,
     }),
     V1Module,
     V2Module,

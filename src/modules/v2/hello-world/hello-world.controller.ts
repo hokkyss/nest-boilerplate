@@ -8,6 +8,7 @@ import { ConfigService } from '@nestjs/config';
 
 @Controller({
   version: '2',
+  path: 'hello-world',
 })
 export default class HelloWorldV2Controller implements IHelloWorldController {
   constructor(

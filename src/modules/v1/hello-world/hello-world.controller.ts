@@ -7,6 +7,7 @@ import { Controller, Get, Inject } from '@nestjs/common';
 
 @Controller({
   version: '1',
+  path: 'hello-world',
 })
 export default class HelloWorldV1Controller implements IHelloWorldController {
   constructor(
