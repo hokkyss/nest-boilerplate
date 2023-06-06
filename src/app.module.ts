@@ -1,14 +1,11 @@
 import { ClassSerializerInterceptor, Module } from '@nestjs/common';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { JoiPipeModule } from 'nestjs-joi';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { HelloWorldModule } from './modules/hello-world/hello-world.module';
 
 @Module({
-  imports: [JoiPipeModule],
-  controllers: [AppController],
+  imports: [JoiPipeModule, HelloWorldModule],
   providers: [
-    AppService,
     {
       provide: APP_INTERCEPTOR,
       useClass: ClassSerializerInterceptor,
