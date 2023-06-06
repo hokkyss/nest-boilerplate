@@ -5,7 +5,9 @@ import IHelloWorldService, {
 } from '@/services/hello-world.service';
 import { Controller, Get, Inject } from '@nestjs/common';
 
-@Controller()
+@Controller({
+  version: '1',
+})
 export default class HelloWorldV1Controller implements IHelloWorldController {
   constructor(
     @Inject(HELLO_WORLD_SERVICE)

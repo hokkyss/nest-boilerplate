@@ -2,16 +2,18 @@ import { ClassSerializerInterceptor, Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { JoiPipeModule } from 'nestjs-joi';
-import { HelloWorldModule } from './modules/hello-world/hello-world.module';
+import { V1Module } from './modules/v1/v1.module';
+import { V2Module } from './modules/v2/v2.module';
 
 @Module({
   imports: [
     JoiPipeModule,
-    HelloWorldModule,
     ConfigModule.forRoot({
-      ignoreEnvFile: true,
       isGlobal: true,
+      ignoreEnvFile: true,
     }),
+    V1Module,
+    V2Module,
     // { module: PrismaModule, global: true },
   ],
   providers: [
