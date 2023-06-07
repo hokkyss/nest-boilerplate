@@ -1,13 +1,14 @@
 import IHelloWorldController from '@/controllers/hello-world.controller';
+import Controller from '@/decorators/controller.decorator';
 import HelloWorld from '@/models/hello-world.model';
 import IHelloWorldService, {
   HELLO_WORLD_SERVICE,
 } from '@/services/hello-world.service';
-import { Controller, Get, Inject } from '@nestjs/common';
+import { Get, Inject } from '@nestjs/common';
 
 @Controller({
-  version: '1',
   path: 'hello-world',
+  version: '1',
 })
 export default class HelloWorldV1Controller implements IHelloWorldController {
   constructor(

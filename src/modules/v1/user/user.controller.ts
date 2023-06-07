@@ -1,19 +1,21 @@
 import IUserController from '@/controllers/user.controller';
+import Controller from '@/decorators/controller.decorator';
 import IUserService, { USER_SERVICE } from '@/services/user.service';
-import { Body, Controller, Inject, Post } from '@nestjs/common';
+import { Body, HttpCode, Inject, Post } from '@nestjs/common';
+import { ApiOkResponse } from '@nestjs/swagger';
 import RegisterDto from './dto/register.dto';
 import SignInDto from './dto/sign-in.dto';
+import Token from './entities/token.entity';
 
-@Controller({
-  version: '1',
-  path: 'user',
-})
+@Controller({ path: 'user', version: '1' })
 export default class UserV1Controller implements IUserController {
   constructor(
     @Inject(USER_SERVICE)
     private readonly userService: IUserService,
   ) {}
 
+  @ApiOkResponse({ type: Token })
+  @HttpCode(200)
   @Post('login')
   async signIn(@Body() body: SignInDto) {
     const user = await this.userService.getUser(body.email);
@@ -23,6 +25,8 @@ export default class UserV1Controller implements IUserController {
     return token;
   }
 
+  @ApiOkResponse({ type: Token })
+  @HttpCode(200)
   @Post('register')
   async register(@Body() body: RegisterDto) {
     const user = await this.userService.createUser(body);

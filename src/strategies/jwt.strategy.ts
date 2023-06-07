@@ -3,6 +3,8 @@ import { USER_SERVICE } from '@/services/user.service';
 import { Inject, Injectable, UnauthorizedException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { PassportStrategy } from '@nestjs/passport';
+import { User } from '@prisma/client';
+import { Request } from 'express';
 import { ExtractJwt, Strategy, StrategyOptions } from 'passport-jwt';
 
 @Injectable()
@@ -22,9 +24,13 @@ export default class JwtStrategy extends PassportStrategy(Strategy) {
     const user = await this.userRepository.getUser(payload.id);
 
     if (!user) {
-      throw new UnauthorizedException();
+      throw new UnauthorizedException('auth/invalid-credentials');
     }
 
     return user;
   }
+}
+
+export interface AuthenticatedRequest extends Request {
+  user: User;
 }

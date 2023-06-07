@@ -1,9 +1,10 @@
 import { ClassSerializerInterceptor, Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { APP_INTERCEPTOR } from '@nestjs/core';
+import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
 import { JoiPipeModule } from 'nestjs-joi';
-import { V1Module } from './modules/v1/v1.module';
-import { V2Module } from './modules/v2/v2.module';
+import HttpExceptionFilter from './filters/http.filter';
+import V1Module from './modules/v1/v1.module';
+import V2Module from './modules/v2/v2.module';
 
 @Module({
   imports: [
@@ -21,6 +22,10 @@ import { V2Module } from './modules/v2/v2.module';
     {
       provide: APP_INTERCEPTOR,
       useClass: ClassSerializerInterceptor,
+    },
+    {
+      provide: APP_FILTER,
+      useClass: HttpExceptionFilter,
     },
   ],
 })

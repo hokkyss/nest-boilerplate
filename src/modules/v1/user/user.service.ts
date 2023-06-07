@@ -39,7 +39,7 @@ export default class UserV1Service implements IUserService {
         : await this.userRepository.getUser(idOrEmail);
 
     if (!user) {
-      throw new NotFoundException();
+      throw new NotFoundException('user/not-found');
     }
 
     return user;
