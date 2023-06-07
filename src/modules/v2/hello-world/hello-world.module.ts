@@ -1,3 +1,4 @@
+import { PrismaModule } from '@/prisma/prisma.module';
 import { HELLO_WORLD_REPOSITORY } from '@/repositories/hello-world.repository';
 import { HELLO_WORLD_SERVICE } from '@/services/hello-world.service';
 import { Module } from '@nestjs/common';
@@ -6,6 +7,7 @@ import HelloWorldV2Repository from './hello-world.repository';
 import HelloWorldV2Service from './hello-world.service';
 
 @Module({
+  imports: [PrismaModule],
   controllers: [HelloWorldV2Controller],
   providers: [
     {

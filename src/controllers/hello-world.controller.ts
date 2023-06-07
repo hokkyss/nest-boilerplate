@@ -1,5 +1,5 @@
 import HelloWorld from '@/models/hello-world.model';
 
-export default interface IAppController {
+export default interface IHelloWorldController {
   getHello(): Promise<HelloWorld>;
 }

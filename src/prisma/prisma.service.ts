@@ -16,3 +16,5 @@ export default class PrismaService
     });
   }
 }
+
+export const PRISMA_SERVICE = 'PRISMA_SERVICE';
