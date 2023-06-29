@@ -29,4 +29,4 @@ import V2Module from './modules/v2/v2.module';
     },
   ],
 })
-export class AppModule {}
+export default class AppModule {}
