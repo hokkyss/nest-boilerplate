@@ -6,7 +6,6 @@ import HelloWorld from '@/models/hello-world.model';
 import type IHelloWorldService from '@/services/hello-world.service';
 import { HELLO_WORLD_SERVICE } from '@/services/hello-world.service';
 import { Get, HttpCode, Inject } from '@nestjs/common';
-import { type ConfigService } from '@nestjs/config';
 
 @ApiBearerAuth()
 @Controller({ path: 'hello-world', version: '2' })
@@ -14,7 +13,6 @@ export default class HelloWorldV2Controller implements IHelloWorldController {
   constructor(
     @Inject(HELLO_WORLD_SERVICE)
     private readonly helloWorldService: IHelloWorldService,
-    private readonly configService: ConfigService,
   ) {}
 
   @Get()

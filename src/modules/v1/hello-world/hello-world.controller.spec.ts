@@ -1,13 +1,12 @@
+import HelloWorld from '@/models/hello-world.model';
 import { HELLO_WORLD_REPOSITORY } from '@/repositories/hello-world.repository';
 import { HELLO_WORLD_SERVICE } from '@/services/hello-world.service';
-import { Test, TestingModule } from '@nestjs/testing';
+import { Test, type TestingModule } from '@nestjs/testing';
 import HelloWorldV1Controller from './hello-world.controller';
 import HelloWorldV1Repository from './hello-world.repository';
 import HelloWorldV1Service from './hello-world.service';
-
 describe('HelloWorldV1Controller', () => {
   let appController: HelloWorldV1Controller;
-
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
       controllers: [HelloWorldV1Controller],
@@ -22,13 +21,19 @@ describe('HelloWorldV1Controller', () => {
         },
       ],
     }).compile();
-
     appController = app.get<HelloWorldV1Controller>(HelloWorldV1Controller);
   });
 
   describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+    it('should return "Hello World!"', async () => {
+      expect.assertions(2);
+
+      await expect(appController.getHello()).resolves.toBeInstanceOf(
+        HelloWorld,
+      );
+      await expect(appController.getHello()).resolves.toEqual(
+        new HelloWorld({ message: `Hello World Version 1` }),
+      );
     });
   });
 });
