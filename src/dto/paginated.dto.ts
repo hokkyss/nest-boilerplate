@@ -1,14 +1,21 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { extendZodWithOpenApi } from '@anatine/zod-openapi';
+import { z } from 'zod';
 
-export default class PaginatedDto<T> {
-  @ApiProperty()
-  total: number;
+extendZodWithOpenApi(z);
 
-  @ApiProperty()
-  limit: number;
+const paginatedResponseSchema = <T>(model: z.ZodType<T>) =>
+  z
+    .object({
+      total: z.number().openapi({
+        description: 'The number of elements in total',
+      }),
+      limit: z.number().openapi({
+        description: 'The number of elements in this page',
+      }),
+      offset: z.number().openapi({
+        description: 'Index of the first element in this page',
+      }),
+    })
+    .merge(z.object({ results: z.array(model) }));
 
-  @ApiProperty()
-  offset: number;
-
-  results: T[];
-}
+export default paginatedResponseSchema;

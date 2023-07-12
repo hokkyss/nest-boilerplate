@@ -1,15 +1,14 @@
-import type IUserController from '@/controllers/user.controller';
 import Controller from '@/decorators/controller.decorator';
 import type IUserService from '@/services/user.service';
 import { USER_SERVICE } from '@/services/user.service';
 import { Body, HttpCode, Inject, Post } from '@nestjs/common';
 import { ApiOkResponse } from '@nestjs/swagger';
-import type RegisterDto from './dto/register.dto';
-import type SignInDto from './dto/sign-in.dto';
 import Token from './entities/token.entity';
+import type RegisterDto from './payloads/register.payload';
+import type SignInDto from './payloads/sign-in.payload';
 
 @Controller({ path: 'user', version: '1' })
-export default class UserV1Controller implements IUserController {
+export default class UserV1Controller {
   constructor(
     @Inject(USER_SERVICE)
     private readonly userService: IUserService,

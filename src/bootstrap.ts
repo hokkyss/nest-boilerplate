@@ -1,8 +1,13 @@
 import AppModule from '@/app.module';
+import { patchNestjsSwagger } from '@anatine/zod-nestjs';
+import { extendZodWithOpenApi } from '@anatine/zod-openapi';
 import { VersioningType, type INestApplication } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { type Express } from 'express';
+import { z } from 'zod';
+
+extendZodWithOpenApi(z);
 
 export default async function bootstrap(): Promise<
   [INestApplication, Express]
@@ -20,6 +25,7 @@ export default async function bootstrap(): Promise<
     .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, swaggerConfig);
+  patchNestjsSwagger();
   SwaggerModule.setup('swagger', app, document, {
     customSiteTitle: 'boilerplate',
   });

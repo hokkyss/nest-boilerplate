@@ -1,7 +1,7 @@
-import HelloWorld from '@/models/hello-world.model';
 import { HELLO_WORLD_REPOSITORY } from '@/repositories/hello-world.repository';
 import { HELLO_WORLD_SERVICE } from '@/services/hello-world.service';
 import { Test, type TestingModule } from '@nestjs/testing';
+import HelloWorld from './entities/hello-world.entity';
 import HelloWorldV2Controller from './hello-world.controller';
 import HelloWorldV2Repository from './hello-world.repository';
 import HelloWorldV2Service from './hello-world.service';
@@ -26,13 +26,10 @@ describe('HelloWorldV2Controller', () => {
 
   describe('root', () => {
     it('should return "Hello World!"', async () => {
-      expect.assertions(2);
+      expect.assertions(1);
 
-      await expect(appController.getHello()).resolves.toBeInstanceOf(
-        HelloWorld,
-      );
       await expect(appController.getHello()).resolves.toEqual(
-        new HelloWorld({ message: `Hello World Version 2` }),
+        HelloWorld.create({ message: 'Hello World Version 2' }),
       );
     });
   });

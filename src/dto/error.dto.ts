@@ -1,9 +1,22 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { createZodDto } from '@anatine/zod-nestjs';
+import { extendZodWithOpenApi } from '@anatine/zod-openapi';
+import { HttpStatus } from '@nestjs/common';
+import { z } from 'zod';
 
-export default class ErrorDto {
-  @ApiProperty({ type: 'number' })
-  status: number;
+extendZodWithOpenApi(z);
 
-  @ApiProperty({ type: 'string' })
-  code: string;
-}
+const errorSchema = z.object({
+  status: z.nativeEnum(HttpStatus),
+  code: z
+    .array(
+      z
+        .string()
+        .refine((value) => value.split('/').length === 2, {
+          message: 'Error code must follow <entity>/<error> pattern.',
+        })
+        .openapi({ example: 'hello-world/not-found' }),
+    )
+    .min(1),
+});
+
+export default class ErrorDto extends createZodDto(errorSchema) {}

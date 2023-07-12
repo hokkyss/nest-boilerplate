@@ -1,4 +1,3 @@
-import type IRegisterDto from '@/dto/register.dto';
 import type IUserRepository from '@/repositories/user.repository';
 import { USER_REPOSITORY } from '@/repositories/user.repository';
 import type IUserService from '@/services/user.service';
@@ -9,8 +8,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { type JwtService } from '@nestjs/jwt';
-import { type User } from '@prisma/client';
-import Token from './entities/token.entity';
+import { type Prisma, type User } from '@prisma/client';
 
 @Injectable()
 export default class UserV1Service implements IUserService {
@@ -19,7 +17,7 @@ export default class UserV1Service implements IUserService {
     private readonly jwtService: JwtService,
   ) {}
 
-  async createUser(body: IRegisterDto) {
+  async createUser(body: Prisma.UserCreateInput) {
     try {
       // will throw NotFoundException if email is taken
       await this.getUser(body.email);
@@ -47,6 +45,6 @@ export default class UserV1Service implements IUserService {
   async login(user: User) {
     const payload = { id: user.id };
 
-    return new Token({ token: this.jwtService.sign(payload) });
+    return this.jwtService.sign(payload);
   }
 }

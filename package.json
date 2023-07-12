@@ -23,6 +23,8 @@
     "test:e2e": "vitest --ui --config ./vitest.config.e2e.ts"
   },
   "dependencies": {
+    "@anatine/zod-nestjs": "^2.0.1",
+    "@anatine/zod-openapi": "^2.0.1",
     "@nestjs/common": "^9.0.0",
     "@nestjs/config": "^2.3.2",
     "@nestjs/core": "^9.0.0",
@@ -37,13 +39,13 @@
     "@types/passport-local": "^1.0.35",
     "bcrypt": "^5.1.0",
     "class-transformer": "^0.5.1",
-    "joi": "^17.9.2",
-    "nestjs-joi": "^1.9.0",
+    "openapi3-ts": "^4.1.2",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.2.0"
+    "rxjs": "^7.2.0",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",

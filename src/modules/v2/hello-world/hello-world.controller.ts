@@ -1,24 +1,24 @@
-import type IHelloWorldController from '@/controllers/hello-world.controller';
 import ApiBearerAuth from '@/decorators/api-bearer.decorator';
-import ApiPaginatedResponse from '@/decorators/api-paginated-response.decorator';
 import Controller from '@/decorators/controller.decorator';
-import HelloWorld from '@/models/hello-world.model';
 import type IHelloWorldService from '@/services/hello-world.service';
 import { HELLO_WORLD_SERVICE } from '@/services/hello-world.service';
-import { Get, HttpCode, Inject } from '@nestjs/common';
+import { Get, Inject } from '@nestjs/common';
+import { ApiOkResponse } from '@nestjs/swagger';
+import HelloWorldV2 from './entities/hello-world.entity';
 
 @ApiBearerAuth()
 @Controller({ path: 'hello-world', version: '2' })
-export default class HelloWorldV2Controller implements IHelloWorldController {
+export default class HelloWorldV2Controller {
   constructor(
     @Inject(HELLO_WORLD_SERVICE)
     private readonly helloWorldService: IHelloWorldService,
   ) {}
 
   @Get()
-  @HttpCode(200)
-  @ApiPaginatedResponse(HelloWorld)
+  @ApiOkResponse({ type: HelloWorldV2 })
   async getHello() {
-    return new HelloWorld({ message: await this.helloWorldService.getHello() });
+    return HelloWorldV2.create({
+      message: await this.helloWorldService.getHello(),
+    });
   }
 }

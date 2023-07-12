@@ -1,9 +1,8 @@
-import type IRegisterDto from '@/dto/register.dto';
 import type PrismaService from '@/prisma/prisma.service';
 import { PRISMA_SERVICE } from '@/prisma/prisma.service';
 import type IUserRepository from '@/repositories/user.repository';
 import { Inject, Injectable } from '@nestjs/common';
-import { type User } from '@prisma/client';
+import { type Prisma, type User } from '@prisma/client';
 import { hash } from 'bcrypt';
 
 @Injectable()
@@ -12,7 +11,7 @@ export default class UserV1Repository implements IUserRepository {
     @Inject(PRISMA_SERVICE) private readonly prismaService: PrismaService,
   ) {}
 
-  async createUser(body: IRegisterDto) {
+  async createUser(body: Prisma.UserCreateInput) {
     return await this.prismaService.user.create({
       data: {
         email: body.email,

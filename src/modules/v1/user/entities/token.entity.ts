@@ -1,13 +1,10 @@
-import type IToken from '@/models/token.model';
-import { ApiProperty } from '@nestjs/swagger';
-import { Expose } from 'class-transformer';
+import { createZodDto } from '@anatine/zod-nestjs';
+import { z } from 'zod';
 
-export default class Token implements IToken {
-  @Expose()
-  @ApiProperty({ type: 'string' })
-  token: string;
+const tokenEntity = z
+  .object({
+    token: z.string(),
+  })
+  .openapi({});
 
-  constructor(attributes: Partial<IToken>) {
-    Object.assign(this, attributes);
-  }
-}
+export default class Token extends createZodDto(tokenEntity) {}
