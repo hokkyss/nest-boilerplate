@@ -1,16 +1,15 @@
-import IRegisterDto from '@/dto/register.dto';
-import IUserRepository, {
-  USER_REPOSITORY,
-} from '@/repositories/user.repository';
-import IUserService from '@/services/user.service';
+import type IRegisterDto from '@/dto/register.dto';
+import type IUserRepository from '@/repositories/user.repository';
+import { USER_REPOSITORY } from '@/repositories/user.repository';
+import type IUserService from '@/services/user.service';
 import {
   BadRequestException,
   Inject,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
-import { User } from '@prisma/client';
+import { type JwtService } from '@nestjs/jwt';
+import { type User } from '@prisma/client';
 import Token from './entities/token.entity';
 
 @Injectable()

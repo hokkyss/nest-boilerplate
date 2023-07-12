@@ -1,8 +1,8 @@
 import AppModule from '@/app.module';
-import { INestApplication, VersioningType } from '@nestjs/common';
+import { VersioningType, type INestApplication } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { Express } from 'express';
+import { type Express } from 'express';
 
 export default async function bootstrap(): Promise<
   [INestApplication, Express]

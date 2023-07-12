@@ -1,7 +1,7 @@
 import {
-  ControllerOptions,
   Controller as NestController,
   applyDecorators,
+  type ControllerOptions,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 

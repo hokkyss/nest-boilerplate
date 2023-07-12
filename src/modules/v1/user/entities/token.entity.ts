@@ -1,4 +1,4 @@
-import IToken from '@/models/token.model';
+import type IToken from '@/models/token.model';
 import { ApiProperty } from '@nestjs/swagger';
 import { Expose } from 'class-transformer';
 

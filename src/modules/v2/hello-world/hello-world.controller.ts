@@ -1,13 +1,12 @@
-import IHelloWorldController from '@/controllers/hello-world.controller';
+import type IHelloWorldController from '@/controllers/hello-world.controller';
 import ApiBearerAuth from '@/decorators/api-bearer.decorator';
 import ApiPaginatedResponse from '@/decorators/api-paginated-response.decorator';
 import Controller from '@/decorators/controller.decorator';
 import HelloWorld from '@/models/hello-world.model';
-import IHelloWorldService, {
-  HELLO_WORLD_SERVICE,
-} from '@/services/hello-world.service';
+import type IHelloWorldService from '@/services/hello-world.service';
+import { HELLO_WORLD_SERVICE } from '@/services/hello-world.service';
 import { Get, HttpCode, Inject } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
+import { type ConfigService } from '@nestjs/config';
 
 @ApiBearerAuth()
 @Controller({ path: 'hello-world', version: '2' })

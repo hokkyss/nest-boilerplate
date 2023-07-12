@@ -1,5 +1,5 @@
-import IRegisterDto from '@/dto/register.dto';
-import { User } from '@prisma/client';
+import type IRegisterDto from '@/dto/register.dto';
+import { type User } from '@prisma/client';
 
 export default interface IUserRepository {
   getUser(id: number): Promise<User | null>;

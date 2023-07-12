@@ -1,7 +1,6 @@
-import IHelloWorldRepository, {
-  HELLO_WORLD_REPOSITORY,
-} from '@/repositories/hello-world.repository';
-import IHelloWorldServixe from '@/services/hello-world.service';
+import type IHelloWorldRepository from '@/repositories/hello-world.repository';
+import { HELLO_WORLD_REPOSITORY } from '@/repositories/hello-world.repository';
+import type IHelloWorldServixe from '@/services/hello-world.service';
 import { Inject, Injectable } from '@nestjs/common';
 
 @Injectable()

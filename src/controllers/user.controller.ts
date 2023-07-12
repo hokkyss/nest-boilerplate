@@ -1,6 +1,6 @@
-import IRegisterDto from '@/dto/register.dto';
-import ISignInDto from '@/dto/sign-in.dto';
-import IToken from '@/models/token.model';
+import type IRegisterDto from '@/dto/register.dto';
+import type ISignInDto from '@/dto/sign-in.dto';
+import type IToken from '@/models/token.model';
 
 export default interface IUserController {
   signIn(body: ISignInDto): Promise<IToken>;

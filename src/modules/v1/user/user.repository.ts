@@ -1,8 +1,9 @@
-import IRegisterDto from '@/dto/register.dto';
-import PrismaService, { PRISMA_SERVICE } from '@/prisma/prisma.service';
-import IUserRepository from '@/repositories/user.repository';
+import type IRegisterDto from '@/dto/register.dto';
+import type PrismaService from '@/prisma/prisma.service';
+import { PRISMA_SERVICE } from '@/prisma/prisma.service';
+import type IUserRepository from '@/repositories/user.repository';
 import { Inject, Injectable } from '@nestjs/common';
-import { User } from '@prisma/client';
+import { type User } from '@prisma/client';
 import { hash } from 'bcrypt';
 
 @Injectable()

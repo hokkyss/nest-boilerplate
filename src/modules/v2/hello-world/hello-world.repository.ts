@@ -1,5 +1,6 @@
-import PrismaService, { PRISMA_SERVICE } from '@/prisma/prisma.service';
-import IHelloWorldRepository from '@/repositories/hello-world.repository';
+import type PrismaService from '@/prisma/prisma.service';
+import { PRISMA_SERVICE } from '@/prisma/prisma.service';
+import type IHelloWorldRepository from '@/repositories/hello-world.repository';
 import { Inject, Injectable } from '@nestjs/common';
 
 @Injectable()

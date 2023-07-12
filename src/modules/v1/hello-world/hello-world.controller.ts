@@ -1,9 +1,8 @@
-import IHelloWorldController from '@/controllers/hello-world.controller';
+import type IHelloWorldController from '@/controllers/hello-world.controller';
 import Controller from '@/decorators/controller.decorator';
 import HelloWorld from '@/models/hello-world.model';
-import IHelloWorldService, {
-  HELLO_WORLD_SERVICE,
-} from '@/services/hello-world.service';
+import type IHelloWorldService from '@/services/hello-world.service';
+import { HELLO_WORLD_SERVICE } from '@/services/hello-world.service';
 import { Get, Inject } from '@nestjs/common';
 
 @Controller({

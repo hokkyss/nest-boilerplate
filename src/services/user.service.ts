@@ -1,6 +1,6 @@
-import IRegisterDto from '@/dto/register.dto';
-import IToken from '@/models/token.model';
-import { User } from '@prisma/client';
+import type IRegisterDto from '@/dto/register.dto';
+import type IToken from '@/models/token.model';
+import { type User } from '@prisma/client';
 
 export default interface IUserService {
   getUser(id: number): Promise<User>;

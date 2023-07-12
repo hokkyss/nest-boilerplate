@@ -1,10 +1,11 @@
-import IUserController from '@/controllers/user.controller';
+import type IUserController from '@/controllers/user.controller';
 import Controller from '@/decorators/controller.decorator';
-import IUserService, { USER_SERVICE } from '@/services/user.service';
+import type IUserService from '@/services/user.service';
+import { USER_SERVICE } from '@/services/user.service';
 import { Body, HttpCode, Inject, Post } from '@nestjs/common';
 import { ApiOkResponse } from '@nestjs/swagger';
-import RegisterDto from './dto/register.dto';
-import SignInDto from './dto/sign-in.dto';
+import type RegisterDto from './dto/register.dto';
+import type SignInDto from './dto/sign-in.dto';
 import Token from './entities/token.entity';
 
 @Controller({ path: 'user', version: '1' })

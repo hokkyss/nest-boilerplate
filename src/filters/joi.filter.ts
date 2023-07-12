@@ -1,8 +1,8 @@
 import {
-  ArgumentsHost,
   BadRequestException,
   Catch,
-  ExceptionFilter,
+  type ArgumentsHost,
+  type ExceptionFilter,
 } from '@nestjs/common';
 import { JoiPipeValidationException } from 'nestjs-joi';
 
