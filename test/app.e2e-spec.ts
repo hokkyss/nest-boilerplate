@@ -1,8 +1,12 @@
-import AppModule from '@/app.module';
-import { VersioningType, type INestApplication } from '@nestjs/common';
+import type { INestApplication } from '@nestjs/common';
+import type { TestingModule } from '@nestjs/testing';
+
+import { VersioningType } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { Test, type TestingModule } from '@nestjs/testing';
+import { Test } from '@nestjs/testing';
 import request from 'supertest';
+
+import AppModule from '@/app.module';
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;
