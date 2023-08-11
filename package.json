@@ -81,8 +81,8 @@
     "schema": "./src/prisma/schema.prisma"
   },
   "lint-staged": {
-    "*.{ts}": [
-      "lint",
+    "*.ts": [
+      "yarn lint",
       "vitest related --run --no-ui --coverage --passWithNoTests"
     ]
   }
