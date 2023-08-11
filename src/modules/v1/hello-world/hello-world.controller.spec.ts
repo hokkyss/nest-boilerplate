@@ -1,6 +1,9 @@
+import type { TestingModule } from '@nestjs/testing';
+
 import { HELLO_WORLD_REPOSITORY } from '@/repositories/hello-world.repository';
 import { HELLO_WORLD_SERVICE } from '@/services/hello-world.service';
-import { Test, type TestingModule } from '@nestjs/testing';
+import { Test } from '@nestjs/testing';
+
 import HelloWorld from './entities/hello-world.entity';
 import HelloWorldV1Controller from './hello-world.controller';
 import HelloWorldV1Repository from './hello-world.repository';

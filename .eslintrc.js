@@ -1,14 +1,15 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    project: 'tsconfig.lint.json',
+    project: 'tsconfig.eslint.json',
     tsconfigRootDir: __dirname,
     sourceType: 'module',
   },
-  plugins: ['@typescript-eslint'],
+  plugins: ['@typescript-eslint', 'perfectionist'],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:perfectionist/recommended-natural',
     'plugin:prettier/recommended',
   ],
   root: true,
@@ -26,8 +27,7 @@ module.exports = {
       'error',
       {
         prefer: 'type-imports',
-        fixStyle: 'inline-type-imports',
-        disallowTypeAnnotations: false,
+        fixStyle: 'separate-type-imports',
       },
     ],
     '@typescript-eslint/explicit-function-return-type': 'off',
@@ -39,6 +39,24 @@ module.exports = {
         argsIgnorePattern: '^_',
         varsIgnorePattern: '^_',
         destructuredArrayIgnorePattern: '^_',
+      },
+    ],
+    'perfectionist/sort-imports': [
+      'error',
+      {
+        groups: [
+          'side-effect',
+          ['type', 'builtin-type', 'external-type'],
+          'internal-type',
+          'parent-type',
+          'sibling-type',
+          ['builtin', 'external'],
+          'internal',
+          'parent',
+          'sibling',
+          'unknown',
+        ],
+        'read-tsconfig': true,
       },
     ],
   },

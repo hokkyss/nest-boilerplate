@@ -6,7 +6,6 @@ import { z } from 'zod';
 extendZodWithOpenApi(z);
 
 const errorSchema = z.object({
-  status: z.nativeEnum(HttpStatus),
   code: z
     .array(
       z
@@ -17,6 +16,7 @@ const errorSchema = z.object({
         .openapi({ example: 'hello-world/not-found' }),
     )
     .min(1),
+  status: z.nativeEnum(HttpStatus),
 });
 
 export default class ErrorDto extends createZodDto(errorSchema) {}

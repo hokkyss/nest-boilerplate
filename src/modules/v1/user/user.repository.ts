@@ -1,8 +1,9 @@
 import type PrismaService from '@/prisma/prisma.service';
-import { PRISMA_SERVICE } from '@/prisma/prisma.service';
 import type IUserRepository from '@/repositories/user.repository';
+import type { Prisma, User } from '@prisma/client';
+
+import { PRISMA_SERVICE } from '@/prisma/prisma.service';
 import { Inject, Injectable } from '@nestjs/common';
-import { type Prisma, type User } from '@prisma/client';
 import { hash } from 'bcrypt';
 
 @Injectable()
@@ -24,8 +25,8 @@ export default class UserV1Repository implements IUserRepository {
   async getUser(idOrEmail: number | string): Promise<User | null> {
     return await this.prismaService.user.findFirst({
       where: {
-        id: typeof idOrEmail === 'number' ? idOrEmail : undefined,
         email: typeof idOrEmail === 'string' ? idOrEmail : undefined,
+        id: typeof idOrEmail === 'number' ? idOrEmail : undefined,
       },
     });
   }

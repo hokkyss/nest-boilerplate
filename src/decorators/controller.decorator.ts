@@ -1,8 +1,6 @@
-import {
-  Controller as NestController,
-  applyDecorators,
-  type ControllerOptions,
-} from '@nestjs/common';
+import type { ControllerOptions } from '@nestjs/common';
+
+import { Controller as NestController, applyDecorators } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 
 const Controller = (options: ControllerOptions) =>

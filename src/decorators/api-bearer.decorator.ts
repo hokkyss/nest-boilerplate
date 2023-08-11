@@ -21,13 +21,13 @@ const ApiBearerAuth = () =>
           },
           {
             properties: {
-              status: {
-                type: 'number',
-                example: 401,
-              },
               code: {
-                type: 'string',
                 example: 'auth/invalid-credentials',
+                type: 'string',
+              },
+              status: {
+                example: 401,
+                type: 'number',
               },
             },
           },

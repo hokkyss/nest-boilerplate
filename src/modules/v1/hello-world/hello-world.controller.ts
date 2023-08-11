@@ -1,8 +1,10 @@
-import Controller from '@/decorators/controller.decorator';
 import type IHelloWorldService from '@/services/hello-world.service';
+
+import Controller from '@/decorators/controller.decorator';
 import { HELLO_WORLD_SERVICE } from '@/services/hello-world.service';
 import { Get, Inject } from '@nestjs/common';
 import { ApiOkResponse } from '@nestjs/swagger';
+
 import HelloWorldV1 from './entities/hello-world.entity';
 
 @Controller({

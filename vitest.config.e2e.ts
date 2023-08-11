@@ -3,15 +3,15 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
-  test: {
-    include: ['**/*.e2e-spec.ts'],
-    globals: true,
-    root: './',
-  },
   plugins: [
     tsconfigPaths(),
     swc.vite({
       module: { type: 'es6' },
     }),
   ],
+  test: {
+    globals: true,
+    include: ['**/*.e2e-spec.ts'],
+    root: './',
+  },
 });

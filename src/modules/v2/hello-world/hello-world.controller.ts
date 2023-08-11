@@ -1,9 +1,11 @@
+import type IHelloWorldService from '@/services/hello-world.service';
+
 import ApiBearerAuth from '@/decorators/api-bearer.decorator';
 import Controller from '@/decorators/controller.decorator';
-import type IHelloWorldService from '@/services/hello-world.service';
 import { HELLO_WORLD_SERVICE } from '@/services/hello-world.service';
 import { Get, Inject } from '@nestjs/common';
 import { ApiOkResponse } from '@nestjs/swagger';
+
 import HelloWorldV2 from './entities/hello-world.entity';
 
 @ApiBearerAuth()
