@@ -8,7 +8,7 @@ import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { z } from 'zod';
 
-import AppModule from '@/app.module';
+import AppModule from './app.module';
 
 extendZodWithOpenApi(z);
 

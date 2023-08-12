@@ -1,6 +1,7 @@
-import { createZodDto } from '@/utils/zod.util';
 import { extendZodWithOpenApi } from '@anatine/zod-openapi';
 import { z } from 'zod';
+
+import { createZodDto } from '../../../../utils/zod.util';
 
 extendZodWithOpenApi(z);
 

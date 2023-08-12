@@ -1,10 +1,12 @@
-import type PrismaService from '@/prisma/prisma.service';
-import type IUserRepository from '@/repositories/user.repository';
 import type { Prisma, User } from '@prisma/client';
 
-import { PRISMA_SERVICE } from '@/prisma/prisma.service';
+import type PrismaService from '../../../prisma/prisma.service';
+import type IUserRepository from '../../../repositories/user.repository';
+
 import { Inject, Injectable } from '@nestjs/common';
 import { hash } from 'bcrypt';
+
+import { PRISMA_SERVICE } from '../../../prisma/prisma.service';
 
 @Injectable()
 export default class UserV1Repository implements IUserRepository {

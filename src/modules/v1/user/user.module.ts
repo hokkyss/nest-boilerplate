@@ -1,11 +1,12 @@
-import PrismaModule from '@/prisma/prisma.module';
-import { USER_REPOSITORY } from '@/repositories/user.repository';
-import { USER_SERVICE } from '@/services/user.service';
-import JwtStrategy from '@/strategies/jwt.strategy';
 import { Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
+
+import PrismaModule from '../../../prisma/prisma.module';
+import { USER_REPOSITORY } from '../../../repositories/user.repository';
+import { USER_SERVICE } from '../../../services/user.service';
+import JwtStrategy from '../../../strategies/jwt.strategy';
 
 import UserV1Controller from './user.controller';
 import UserV1Repository from './user.repository';

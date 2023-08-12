@@ -1,4 +1,4 @@
-import type IHelloWorldRepository from '@/repositories/hello-world.repository';
+import type IHelloWorldRepository from '../../../repositories/hello-world.repository';
 
 import { Injectable } from '@nestjs/common';
 

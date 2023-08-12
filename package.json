@@ -6,6 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "build": "nest build",
     "build:dev": "sh -ac '. ./.env.development; . ./.env.development.local; nest build'",
     "build:prod": "sh -ac '. ./.env.production; . ./.env.production.local; nest build'",
     "start:dev": "sh -ac '. ./.env.development; . ./.env.development.local; nest start --debug --watch'",
@@ -59,6 +60,7 @@
     "@types/supertest": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
+    "@vercel/node": "^2.15.9",
     "@vitest/coverage-v8": "^0.33.0",
     "@vitest/ui": "^0.33.0",
     "eslint": "^8.0.1",

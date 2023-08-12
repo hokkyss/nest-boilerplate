@@ -1,15 +1,17 @@
-import type IUserRepository from '@/repositories/user.repository';
-import type IUserService from '@/services/user.service';
 import type { JwtService } from '@nestjs/jwt';
 import type { Prisma, User } from '@prisma/client';
 
-import { USER_REPOSITORY } from '@/repositories/user.repository';
+import type IUserRepository from '../../../repositories/user.repository';
+import type IUserService from '../../../services/user.service';
+
 import {
   BadRequestException,
   Inject,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
+
+import { USER_REPOSITORY } from '../../../repositories/user.repository';
 
 @Injectable()
 export default class UserV1Service implements IUserService {

@@ -1,12 +1,13 @@
-import type IUserService from '@/services/user.service';
+import type IUserService from '../../../services/user.service';
 
 import type RegisterDto from './payloads/register.payload';
 import type SignInDto from './payloads/sign-in.payload';
 
-import Controller from '@/decorators/controller.decorator';
-import { USER_SERVICE } from '@/services/user.service';
 import { Body, HttpCode, Inject, Post } from '@nestjs/common';
 import { ApiOkResponse } from '@nestjs/swagger';
+
+import Controller from '../../../decorators/controller.decorator';
+import { USER_SERVICE } from '../../../services/user.service';
 
 import Token from './entities/token.entity';
 

@@ -1,11 +1,12 @@
-import type IHelloWorldRepository from '@/repositories/hello-world.repository';
-import type IHelloWorldServixe from '@/services/hello-world.service';
+import type IHelloWorldRepository from '../../../repositories/hello-world.repository';
+import type IHelloWorldService from '../../../services/hello-world.service';
 
-import { HELLO_WORLD_REPOSITORY } from '@/repositories/hello-world.repository';
 import { Inject, Injectable } from '@nestjs/common';
 
+import { HELLO_WORLD_REPOSITORY } from '../../../repositories/hello-world.repository';
+
 @Injectable()
-export default class HelloWorldV2Service implements IHelloWorldServixe {
+export default class HelloWorldV2Service implements IHelloWorldService {
   constructor(
     @Inject(HELLO_WORLD_REPOSITORY)
     private readonly helloWorldRepository: IHelloWorldRepository,

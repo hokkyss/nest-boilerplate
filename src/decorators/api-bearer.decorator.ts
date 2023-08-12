@@ -1,5 +1,3 @@
-import ErrorDto from '@/dto/error.dto';
-import JwtAuthGuard from '@/guards/jwt-auth.guard';
 import { UseGuards, applyDecorators } from '@nestjs/common';
 import {
   ApiExtraModels,
@@ -7,6 +5,9 @@ import {
   ApiBearerAuth as NestApiBearerAuth,
   getSchemaPath,
 } from '@nestjs/swagger';
+
+import ErrorDto from '../dto/error.dto';
+import JwtAuthGuard from '../guards/jwt-auth.guard';
 
 const ApiBearerAuth = () =>
   applyDecorators(

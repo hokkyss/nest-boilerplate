@@ -1,6 +1,7 @@
-import { HELLO_WORLD_REPOSITORY } from '@/repositories/hello-world.repository';
-import { HELLO_WORLD_SERVICE } from '@/services/hello-world.service';
 import { Module } from '@nestjs/common';
+
+import { HELLO_WORLD_REPOSITORY } from '../../../repositories/hello-world.repository';
+import { HELLO_WORLD_SERVICE } from '../../../services/hello-world.service';
 
 import HelloWorldV2Controller from './hello-world.controller';
 import HelloWorldV2Repository from './hello-world.repository';
