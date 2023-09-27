@@ -10,6 +10,7 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
+import { compare } from 'bcrypt';
 
 @Injectable()
 export default class UserV1Service implements IUserService {
@@ -30,14 +31,22 @@ export default class UserV1Service implements IUserService {
     throw new BadRequestException('auth/user-exists');
   }
 
-  async getUser(idOrEmail: number | string) {
+  async getUser(email: number | string, password?: string) {
     const user =
-      typeof idOrEmail === 'string'
-        ? await this.userRepository.getUser(idOrEmail)
-        : await this.userRepository.getUser(idOrEmail);
+      typeof email === 'string'
+        ? await this.userRepository.getUser(email)
+        : await this.userRepository.getUser(email);
 
     if (!user) {
       throw new NotFoundException('user/not-found');
+    }
+
+    if (password) {
+      const verified = await compare(password, user.password);
+
+      if (!verified) {
+        throw new NotFoundException('user/not-found');
+      }
     }
 
     return user;

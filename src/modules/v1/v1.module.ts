@@ -5,6 +5,7 @@ import HelloWorldV1Module from './hello-world/hello-world.module';
 @Module({
   imports: [
     HelloWorldV1Module,
+    // AuthV1Module,
     // UserV1Module,
   ],
 })

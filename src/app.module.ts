@@ -16,7 +16,13 @@ import V2Module from './modules/v2/v2.module';
     }),
     V1Module,
     V2Module,
-    // { module: PrismaModule, global: true },
+    // PrismaModule.registerAsync({
+    //   imports: [],
+    //   inject: [],
+    //   useFactory: () => ({
+    //     softDeleteOptions: ['User'],
+    //   }),
+    // }),
   ],
   providers: [
     {
