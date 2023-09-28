@@ -3,17 +3,20 @@ import type { Prisma } from '@prisma/client';
 
 import type { SoftDeleteOption } from './prisma.module-definition';
 
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
 
-import { SoftDeleteMode } from './prisma.module-definition';
+import PrismaModuleDef, { SoftDeleteMode } from './prisma.module-definition';
 
 @Injectable()
 export default class PrismaService
   extends PrismaClient
   implements OnModuleInit
 {
-  constructor(private readonly options: SoftDeleteOption[] = []) {
+  constructor(
+    @Inject(PrismaModuleDef.MODULE_OPTIONS_TOKEN)
+    private readonly options: SoftDeleteOption[] = [],
+  ) {
     super({
       errorFormat: 'pretty',
       log: ['query'],
